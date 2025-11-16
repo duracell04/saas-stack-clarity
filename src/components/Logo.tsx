@@ -22,6 +22,7 @@ export const Logo = ({ className, showWordmark = true, size = "md" }: LogoProps)
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="h-full w-auto"
+          style={{ transform: 'rotate(45deg)' }}
         >
           <defs>
             <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
