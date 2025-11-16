@@ -15,27 +15,57 @@ export const Logo = ({ className, showWordmark = true, size = "md" }: LogoProps)
 
   return (
     <div className={cn("flex items-center gap-2", className)}>
-      {/* Logomark - four-armed gradient mark at +45° */}
+      {/* Logomark - precise geometric four-armed circuit mark */}
       <div className={cn("relative", sizeClasses[size])}>
         <svg
-          viewBox="0 0 32 32"
+          viewBox="0 0 512 512"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="h-full w-auto"
-          style={{ transform: 'rotate(45deg)' }}
         >
           <defs>
             <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stopColor="hsl(var(--brand-yellow))" />
               <stop offset="100%" stopColor="hsl(var(--brand-orange))" />
             </linearGradient>
+            
+            {/* Define one arm as a reusable group */}
+            <g id="arm">
+              {/* L-shaped trace */}
+              <path
+                d="M312 372 V256 H432"
+                strokeWidth="44"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                stroke="url(#logo-gradient)"
+                fill="none"
+              />
+              {/* Ring at tip */}
+              <circle
+                cx="470"
+                cy="256"
+                r="26"
+                strokeWidth="20"
+                fill="none"
+                stroke="url(#logo-gradient)"
+              />
+              {/* Chip rectangle in elbow */}
+              <rect
+                x="344"
+                y="284"
+                width="56"
+                height="24"
+                rx="12"
+                fill="url(#logo-gradient)"
+              />
+            </g>
           </defs>
-          {/* Four-armed mark */}
-          <circle cx="16" cy="16" r="3" fill="url(#logo-gradient)" />
-          <rect x="14" y="4" width="4" height="8" rx="2" fill="url(#logo-gradient)" />
-          <rect x="14" y="20" width="4" height="8" rx="2" fill="url(#logo-gradient)" />
-          <rect x="4" y="14" width="8" height="4" ry="2" fill="url(#logo-gradient)" />
-          <rect x="20" y="14" width="8" height="4" ry="2" fill="url(#logo-gradient)" />
+          
+          {/* Place 4 arms rotated around center (256, 256) */}
+          <use href="#arm" transform="rotate(0 256 256)" />
+          <use href="#arm" transform="rotate(90 256 256)" />
+          <use href="#arm" transform="rotate(180 256 256)" />
+          <use href="#arm" transform="rotate(270 256 256)" />
         </svg>
       </div>
       
