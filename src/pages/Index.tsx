@@ -78,46 +78,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Use Cases */}
-        <section id="use-cases" className="container py-20">
-          <h2 className="text-3xl font-bold text-center mb-12">Built for tool-heavy teams</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <PersonaCard
-              icon={<Building2 className="h-6 w-6" />}
-              title="SaaS companies"
-              subtitle="25–80 people"
-              pains={[
-                "20–60 SaaS tools with no single source of truth",
-                "Zombie seats after layoffs",
-                "Annual renewals that surprise finance"
-              ]}
-            />
-            <PersonaCard
-              icon={<Users className="h-6 w-6" />}
-              title="Agencies & studios"
-              subtitle="8–40 people"
-              pains={[
-                "Client-specific tools on shared cards",
-                "Hard to know which tools are still used by which team",
-                "Offboarding freelancers is manual and error-prone"
-              ]}
-            />
-            <PersonaCard
-              icon={<GraduationCap className="h-6 w-6" />}
-              title="Students & solo builders"
-              subtitle="1–3 people"
-              pains={[
-                "Paying for too many 'just in case' tools",
-                "Hard to pick a clean stack for your budget",
-                "No time to audit subscriptions"
-              ]}
-            />
-          </div>
-          <p className="text-center text-muted-foreground mt-8 max-w-2xl mx-auto">
-            Hyperlink gives you a live inventory of what you use, what you pay, and what you can safely cut.
-          </p>
-        </section>
-
         {/* Product Pillars */}
         <section id="product" className="container py-20">
           <h2 className="text-3xl font-bold text-center mb-12">What Hyperlink does</h2>
@@ -174,6 +134,46 @@ const Index = () => {
               description="See what your stack could look like if you migrated to a clean, role-based toolbox."
             />
           </div>
+        </section>
+
+        {/* Use Cases */}
+        <section id="use-cases" className="container py-20">
+          <h2 className="text-3xl font-bold text-center mb-12">Built for tool-heavy teams</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <PersonaCard
+              icon={<Building2 className="h-6 w-6" />}
+              title="SaaS companies"
+              subtitle="25–80 people"
+              pains={[
+                "20–60 SaaS tools with no single source of truth",
+                "Zombie seats after layoffs",
+                "Annual renewals that surprise finance"
+              ]}
+            />
+            <PersonaCard
+              icon={<Users className="h-6 w-6" />}
+              title="Agencies & studios"
+              subtitle="8–40 people"
+              pains={[
+                "Client-specific tools on shared cards",
+                "Hard to know which tools are still used by which team",
+                "Offboarding freelancers is manual and error-prone"
+              ]}
+            />
+            <PersonaCard
+              icon={<GraduationCap className="h-6 w-6" />}
+              title="Students & solo builders"
+              subtitle="1–3 people"
+              pains={[
+                "Paying for too many 'just in case' tools",
+                "Hard to pick a clean stack for your budget",
+                "No time to audit subscriptions"
+              ]}
+            />
+          </div>
+          <p className="text-center text-muted-foreground mt-8 max-w-2xl mx-auto">
+            Hyperlink gives you a live inventory of what you use, what you pay, and what you can safely cut.
+          </p>
         </section>
 
         {/* Report Preview */}
