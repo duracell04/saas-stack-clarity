@@ -47,7 +47,13 @@ const Index = () => {
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Hyperlink finds zombie tools, duplicate subscriptions and offboarding risks in your SaaS stack – 
-                and turns "we have no idea what we pay for" into a clean, board-ready overview.
+                and turns "we have no idea what we pay for" into a clean, board-ready overview. 
+                Hyperlink runs continuously in the background: when a new tool appears, a zombie resurfaces, 
+                or a renewal is coming up, you see it before it becomes a problem.
+              </p>
+              <p className="text-sm text-muted-foreground font-medium">
+                In practice: a live SaaS inventory, a renewal calendar, risk & owner mapping, and a Leak Report 
+                that shows where to save or simplify.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/demo">
@@ -119,7 +125,7 @@ const Index = () => {
             <PillarCard
               icon={<Search className="h-8 w-8" />}
               title="Discover"
-              description="We ingest your SaaS billing data from card statements or a dedicated invoice inbox and build a live inventory of every tool."
+              description="We ingest your SaaS billing data from card statements or a dedicated invoice inbox and build a live inventory of every tool — kept up to date automatically. We can pull data from card statements, email inboxes or accounting exports — and send insights back into your tools (e.g., Slack, email)."
             />
             <PillarCard
               icon={<AlertTriangle className="h-8 w-8" />}
@@ -134,9 +140,45 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Core Features */}
+        <section className="container py-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">What you get in Hyperlink</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Hyperlink isn't just a PDF report — it's a lightweight SaaS ops cockpit.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            <FeatureCard
+              title="Live tool inventory"
+              description="Every SaaS tool we detect, with vendor, category, owner, team, and spend in one list."
+            />
+            <FeatureCard
+              title="Renewal calendar"
+              description="Upcoming renewals by month, with 'high-risk' / 'high-amount' badges so nothing surprises finance."
+            />
+            <FeatureCard
+              title="Zombie & duplicate detector"
+              description="Automatic flags for tools with no usage signals or overlapping functionality."
+            />
+            <FeatureCard
+              title="Offboarding risk view"
+              description="Shows tools with many admins / ex-employees still having access, so you can clean up in minutes."
+            />
+            <FeatureCard
+              title="Savings simulator"
+              description="Toggle recommended actions on/off to see how much you'd save per year."
+            />
+            <FeatureCard
+              title="Curated toolboxes"
+              description="See what your stack could look like if you migrated to a clean, role-based toolbox."
+            />
+          </div>
+        </section>
+
         {/* Report Preview */}
         <section className="container py-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
               <Badge variant="outline" className="mb-2">Example Report</Badge>
               <h3 className="text-2xl font-bold">42-person B2B SaaS team</h3>
@@ -145,28 +187,97 @@ const Index = () => {
                 <StatRow label="Estimated waste" value="€8,120 / year" highlight />
                 <StatRow label="Tools detected" value="27 tools across 8 categories" />
               </div>
-            </div>
-            <Card className="p-6 border-border bg-card">
-              <h4 className="font-semibold mb-4">Top issues found</h4>
-              <div className="space-y-3">
-                <IssuePreview tool="Figma" issue="Overprovisioned seats" />
-                <IssuePreview tool="Notion + Confluence" issue="Duplicate tools" />
-                <IssuePreview tool="Zoom + Whereby + Meet" issue="Fragmented comms" />
+              
+              {/* Renewal Calendar Preview */}
+              <div className="pt-4">
+                <h4 className="text-sm font-semibold mb-3 text-foreground">🗓 Upcoming renewals</h4>
+                <div className="space-y-2">
+                  <RenewalRow tool="Slack" days={28} amount="€5,400 / year" />
+                  <RenewalRow tool="Figma" days={42} amount="€2,400 / year" />
+                  <RenewalRow tool="Notion" days={60} amount="€1,800 / year" />
+                </div>
+                <p className="text-xs text-muted-foreground mt-3">
+                  In Hyperlink, you'd see all renewals and set reminders before they auto-renew.
+                </p>
               </div>
-              <Link to="/demo" className="block mt-6">
-                <Button className="w-full bg-gradient-to-r from-brand-yellow to-brand-orange text-primary-foreground hover:opacity-90">
-                  Open the interactive mock report
-                </Button>
-              </Link>
-            </Card>
+            </div>
+            
+            <div className="space-y-6">
+              <Card className="p-6 border-border bg-card">
+                <h4 className="font-semibold mb-4">Top issues found</h4>
+                <div className="space-y-3">
+                  <IssuePreview tool="Figma" issue="Overprovisioned seats" />
+                  <IssuePreview tool="Notion + Confluence" issue="Duplicate tools" />
+                  <IssuePreview tool="Zoom + Whereby + Meet" issue="Fragmented comms" />
+                </div>
+                <Link to="/demo" className="block mt-6">
+                  <Button className="w-full bg-gradient-to-r from-brand-yellow to-brand-orange text-primary-foreground hover:opacity-90">
+                    Open the interactive mock report
+                  </Button>
+                </Link>
+              </Card>
+              
+              {/* Risk & Owner Preview */}
+              <Card className="p-6 border-border bg-card">
+                <h4 className="font-semibold mb-4">🛡 Owner & risk overview</h4>
+                <div className="space-y-3">
+                  <OwnerRiskRow 
+                    tool="Figma" 
+                    owner="Design Lead" 
+                    admins={3} 
+                    status="healthy" 
+                  />
+                  <OwnerRiskRow 
+                    tool="AWS" 
+                    owner="CTO" 
+                    admins={7} 
+                    status="offboarding" 
+                  />
+                  <OwnerRiskRow 
+                    tool="HubSpot" 
+                    owner="Sales Ops" 
+                    admins="shared login" 
+                    status="security" 
+                  />
+                </div>
+                <p className="text-xs text-muted-foreground mt-4">
+                  Hyperlink helps you assign an owner for each tool and spot risky access patterns.
+                </p>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Workflow Section */}
+        <section className="container py-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">How Hyperlink fits into your week</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            <WorkflowCard
+              day="Monday"
+              title="Snapshot"
+              description="Ops opens Hyperlink for 5 minutes to check the latest SaaS inventory, spend and new tools detected."
+            />
+            <WorkflowCard
+              day="Midweek"
+              title="Alerts"
+              description="Finance gets a Slack/email alert: 'Linear annual renewal in 30 days – €6,000. 2 unused seats detected.'"
+            />
+            <WorkflowCard
+              day="End of month"
+              title="Decisions"
+              description="Leadership reviews the Leak Report summary, toggles 2–3 recommended cuts, and locks in €X/year in savings."
+            />
           </div>
         </section>
 
         {/* Toolboxes */}
         <section id="toolboxes" className="container py-20">
           <h2 className="text-3xl font-bold text-center mb-4">Toolboxes Hyperlink AI could suggest</h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Curated stacks that match your team size, goals, and budget
+          <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Hyperlink doesn't just tell you what's broken — it can propose a cleaner stack via Toolboxes 
+            based on your current tools, team size and budget.
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             {toolboxes.map((toolbox) => (
@@ -199,6 +310,27 @@ const Index = () => {
               </Card>
             ))}
           </div>
+          
+          {/* Toolbox Capabilities */}
+          <Card className="mt-8 p-6 border-border bg-card/50 max-w-3xl mx-auto">
+            <p className="text-sm text-muted-foreground text-center mb-3">
+              In the real app, you'll be able to:
+            </p>
+            <div className="grid md:grid-cols-3 gap-4 text-center">
+              <div>
+                <p className="text-sm font-medium text-foreground mb-1">Compare stacks</p>
+                <p className="text-xs text-muted-foreground">Your current stack vs a toolbox</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-foreground mb-1">See swap options</p>
+                <p className="text-xs text-muted-foreground">Which tools can be merged</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-foreground mb-1">Simulate savings</p>
+                <p className="text-xs text-muted-foreground">Before making changes</p>
+              </div>
+            </div>
+          </Card>
         </section>
 
         {/* Vision */}
@@ -288,6 +420,13 @@ const PillarCard = ({
   </Card>
 );
 
+const FeatureCard = ({ title, description }: { title: string; description: string }) => (
+  <Card className="p-6 border-border bg-card hover:border-primary/30 transition-colors">
+    <h3 className="font-semibold text-foreground mb-2">{title}</h3>
+    <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+  </Card>
+);
+
 const StatRow = ({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) => (
   <div className="flex justify-between items-center py-2 border-b border-border/50">
     <span className="text-sm text-muted-foreground">{label}</span>
@@ -295,6 +434,63 @@ const StatRow = ({ label, value, highlight }: { label: string; value: string; hi
       {value}
     </span>
   </div>
+);
+
+const RenewalRow = ({ tool, days, amount }: { tool: string; days: number; amount: string }) => (
+  <div className="flex items-center justify-between p-2 rounded-lg bg-background-secondary/50 border border-border/50">
+    <div className="flex-1">
+      <p className="text-sm font-medium text-foreground">{tool}</p>
+      <p className="text-xs text-muted-foreground">{days} days</p>
+    </div>
+    <p className="text-sm font-semibold tabular-nums text-foreground">{amount}</p>
+  </div>
+);
+
+const OwnerRiskRow = ({ 
+  tool, 
+  owner, 
+  admins, 
+  status 
+}: { 
+  tool: string; 
+  owner: string; 
+  admins: number | string; 
+  status: 'healthy' | 'offboarding' | 'security';
+}) => {
+  const statusConfig = {
+    healthy: { icon: '✅', label: 'healthy', color: 'text-success' },
+    offboarding: { icon: '⚠', label: 'offboarding risk', color: 'text-warning' },
+    security: { icon: '⚠', label: 'security risk', color: 'text-destructive' },
+  };
+  const config = statusConfig[status];
+  
+  return (
+    <div className="space-y-1 p-3 rounded-lg bg-background-secondary/50 border border-border/50">
+      <div className="flex items-center justify-between">
+        <p className="text-sm font-medium text-foreground">{tool}</p>
+        <span className={`text-xs ${config.color}`}>{config.icon} {config.label}</span>
+      </div>
+      <p className="text-xs text-muted-foreground">
+        owner: {owner} · {typeof admins === 'number' ? `${admins} admins` : admins}
+      </p>
+    </div>
+  );
+};
+
+const WorkflowCard = ({ 
+  day, 
+  title, 
+  description 
+}: { 
+  day: string; 
+  title: string; 
+  description: string;
+}) => (
+  <Card className="p-6 border-border bg-card">
+    <Badge className="mb-3 bg-primary/10 text-primary">{day}</Badge>
+    <h3 className="font-bold text-foreground mb-2">{title}</h3>
+    <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+  </Card>
 );
 
 const IssuePreview = ({ tool, issue }: { tool: string; issue: string }) => (
