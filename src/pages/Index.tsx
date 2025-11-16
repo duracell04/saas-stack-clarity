@@ -333,31 +333,55 @@ const Index = () => {
           </Card>
         </section>
 
-        {/* Vision */}
+        {/* Roadmap */}
         <section className="container py-20">
-          <Card className="p-8 border-border bg-card text-center">
-            <h3 className="text-2xl font-bold mb-6">The roadmap</h3>
-            <div className="grid md:grid-cols-3 gap-6 text-left">
-              <div>
-                <Badge className="mb-2">Today</Badge>
-                <p className="text-sm text-muted-foreground">
-                  Hyper-clear SaaS Leak Report on your existing stack
-                </p>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">The roadmap</h2>
+            <p className="text-muted-foreground">Building the future of SaaS operations</p>
+          </div>
+          
+          <div className="relative max-w-6xl mx-auto">
+            {/* Timeline line - hidden on mobile */}
+            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 transform -translate-y-1/2" />
+            
+            <div className="grid md:grid-cols-3 gap-8 relative">
+              {/* Today */}
+              <div className="relative">
+                <div className="md:absolute md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background hidden md:block" />
+                <Card className="p-6 border-primary/50 bg-gradient-to-br from-primary/5 to-transparent hover:border-primary transition-all">
+                  <Badge className="mb-3 bg-primary text-primary-foreground">Today</Badge>
+                  <h3 className="text-lg font-bold mb-2">SaaS Leak Report</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Hyper-clear report on your existing stack showing waste, risks, and optimization opportunities
+                  </p>
+                </Card>
               </div>
-              <div>
-                <Badge className="mb-2">Next</Badge>
-                <p className="text-sm text-muted-foreground">
-                  Live SaaS Ops dashboard with alerts and renewals
-                </p>
+
+              {/* Next */}
+              <div className="relative">
+                <div className="md:absolute md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 w-4 h-4 rounded-full bg-accent border-4 border-background hidden md:block" />
+                <Card className="p-6 border-accent/50 bg-gradient-to-br from-accent/5 to-transparent hover:border-accent transition-all">
+                  <Badge variant="secondary" className="mb-3 bg-accent/20 text-accent-foreground">Next</Badge>
+                  <h3 className="text-lg font-bold mb-2">Live Ops Dashboard</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Real-time monitoring with proactive alerts for renewals, new tools, and emerging risks
+                  </p>
+                </Card>
               </div>
-              <div>
-                <Badge className="mb-2">Later</Badge>
-                <p className="text-sm text-muted-foreground">
-                  AI-curated toolboxes and migration assistants
-                </p>
+
+              {/* Later */}
+              <div className="relative">
+                <div className="md:absolute md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 w-4 h-4 rounded-full bg-muted border-4 border-background hidden md:block" />
+                <Card className="p-6 border-border/50 bg-card/50 hover:border-muted transition-all">
+                  <Badge variant="outline" className="mb-3">Later</Badge>
+                  <h3 className="text-lg font-bold mb-2">AI Migration Assistant</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Smart toolbox recommendations and guided migration paths powered by AI analysis
+                  </p>
+                </Card>
               </div>
             </div>
-          </Card>
+          </div>
         </section>
 
         {/* Footer */}
