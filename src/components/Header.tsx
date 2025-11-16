@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Logo } from "./Logo";
 import { Button } from "./ui/button";
+import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
 
 export const Header = () => {
@@ -34,6 +35,7 @@ export const Header = () => {
             <Logo />
           </Link>
           <div className="flex items-center gap-4">
+            <ThemeToggle />
             <Link to="/">
               <Button variant="ghost" size="sm">← Back to site</Button>
             </Link>
@@ -75,6 +77,7 @@ export const Header = () => {
           >
             Toolboxes
           </button>
+          <ThemeToggle />
           <Link to="/demo">
             <Button size="sm" className="bg-gradient-to-r from-brand-yellow to-brand-orange text-primary-foreground hover:opacity-90">
               View mock report
@@ -82,11 +85,14 @@ export const Header = () => {
           </Link>
         </nav>
 
-        <Link to="/demo" className="md:hidden">
-          <Button size="sm" className="bg-gradient-to-r from-brand-yellow to-brand-orange text-primary-foreground">
-            Demo
-          </Button>
-        </Link>
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <Link to="/demo">
+            <Button size="sm" className="bg-gradient-to-r from-brand-yellow to-brand-orange text-primary-foreground">
+              Demo
+            </Button>
+          </Link>
+        </div>
       </div>
     </header>
   );
