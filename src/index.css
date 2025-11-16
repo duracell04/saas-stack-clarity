@@ -8,7 +8,52 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark UI - Corporate minimalist */
+    /* Light theme - Corporate minimalist */
+    --background: 0 0% 100%;
+    --background-secondary: 220 15% 97%;
+    --foreground: 220 20% 10%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+    
+    /* Brand colors - Corporate blue/slate */
+    --brand-yellow: 215 30% 60%;
+    --brand-orange: 215 25% 50%;
+    
+    --primary: 215 28% 55%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 220 10% 92%;
+    --secondary-foreground: 220 20% 10%;
+    
+    --muted: 220 10% 92%;
+    --muted-foreground: 220 10% 40%;
+    
+    --accent: 215 20% 88%;
+    --accent-foreground: 220 20% 10%;
+    
+    /* State colors */
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --success: 142 60% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 90% 55%;
+    --warning-foreground: 220 20% 10%;
+    
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 215 28% 55%;
+    
+    --radius: 1rem;
+  }
+
+  .dark {
+    /* Dark theme - Corporate minimalist */
     --background: 220 20% 8%;
     --background-secondary: 220 18% 12%;
     --foreground: 220 10% 95%;
@@ -18,10 +63,6 @@ All colors MUST be HSL.
     
     --popover: 220 18% 12%;
     --popover-foreground: 220 10% 95%;
-    
-    /* Brand colors - Corporate blue/slate */
-    --brand-yellow: 215 30% 60%;
-    --brand-orange: 215 25% 50%;
     
     --primary: 215 28% 55%;
     --primary-foreground: 220 20% 8%;
@@ -35,7 +76,6 @@ All colors MUST be HSL.
     --accent: 215 20% 40%;
     --accent-foreground: 220 10% 95%;
     
-    /* State colors */
     --destructive: 0 70% 55%;
     --destructive-foreground: 220 10% 95%;
     
@@ -48,8 +88,6 @@ All colors MUST be HSL.
     --border: 220 15% 20%;
     --input: 220 15% 20%;
     --ring: 215 28% 55%;
-    
-    --radius: 1rem;
   }
 }
 
