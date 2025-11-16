@@ -8,46 +8,46 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark UI - Always dark mode */
-    --background: 224 71% 4%;
-    --background-secondary: 222 47% 11%;
-    --foreground: 215 25% 93%;
+    /* Dark UI - Corporate minimalist */
+    --background: 220 20% 8%;
+    --background-secondary: 220 18% 12%;
+    --foreground: 220 10% 95%;
     
-    --card: 222 47% 11%;
-    --card-foreground: 215 25% 93%;
+    --card: 220 18% 12%;
+    --card-foreground: 220 10% 95%;
     
-    --popover: 222 47% 11%;
-    --popover-foreground: 215 25% 93%;
+    --popover: 220 18% 12%;
+    --popover-foreground: 220 10% 95%;
     
-    /* Brand gradient colors */
-    --brand-yellow: 45 100% 71%;
-    --brand-orange: 25 100% 62%;
+    /* Brand colors - Corporate blue/slate */
+    --brand-yellow: 215 30% 60%;
+    --brand-orange: 215 25% 50%;
     
-    --primary: 45 100% 71%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 215 28% 55%;
+    --primary-foreground: 220 20% 8%;
     
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 215 25% 93%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 220 10% 95%;
     
-    --muted: 215 25% 27%;
-    --muted-foreground: 215 16% 65%;
+    --muted: 220 12% 25%;
+    --muted-foreground: 220 8% 60%;
     
-    --accent: 199 89% 48%;
-    --accent-foreground: 215 25% 93%;
+    --accent: 215 20% 40%;
+    --accent-foreground: 220 10% 95%;
     
     /* State colors */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 215 25% 93%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 220 10% 95%;
     
-    --success: 142 71% 45%;
-    --success-foreground: 215 25% 93%;
+    --success: 142 60% 45%;
+    --success-foreground: 220 10% 95%;
     
-    --warning: 45 100% 71%;
-    --warning-foreground: 222 47% 11%;
+    --warning: 38 90% 55%;
+    --warning-foreground: 220 20% 8%;
     
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 45 100% 71%;
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 215 28% 55%;
     
     --radius: 1rem;
   }
@@ -63,9 +63,9 @@ All colors MUST be HSL.
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
   
-  /* Gradient text utility */
+  /* Gradient text utility - Subtle corporate gradient */
   .gradient-text {
-    @apply bg-gradient-to-r from-[hsl(var(--brand-yellow))] to-[hsl(var(--brand-orange))] bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] bg-clip-text text-transparent;
   }
   
   /* Tabular numbers for monetary values */
@@ -144,13 +144,13 @@ All colors MUST be HSL.
     width: 100%;
     height: 100%;
     border: 3px solid transparent;
-    border-top-color: hsl(var(--brand-yellow));
+    border-top-color: hsl(var(--primary));
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
   
   .loading-effect-2::after {
-    border-top-color: hsl(var(--brand-orange));
+    border-top-color: hsl(var(--accent));
     animation-duration: 1.5s;
     animation-direction: reverse;
   }
